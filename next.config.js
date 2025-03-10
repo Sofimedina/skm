@@ -1,7 +1,13 @@
-/** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
-    output: 'export', // Enables static export
-    basePath: '/skm'
-  };
+  reactStrictMode: true,
+  images: {
+    unoptimized: true, // Disable default image optimization
+  },
+  assetPrefix: isProd ? '/skm/' : '',
+  basePath: isProd ? '/skm' : '',
+  output: 'export'
+};
   
-  module.exports = nextConfig;
+module.exports = nextConfig;
