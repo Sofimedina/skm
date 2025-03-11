@@ -1,11 +1,12 @@
-/** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
 const nextConfig = {
-  output: "export", // This enables static HTML export
-  basePath: "/skm", // Replace with your repository name
-  assetPrefix: "/skm/",
+  reactStrictMode: true,
   images: {
-    unoptimized: true, // GitHub Pages does not support Next.js Image Optimization
+    unoptimized: true, // Disable default image optimization
   },
+  assetPrefix: isProd ? '/skm/' : '',
+  basePath: isProd ? '/skm' : '',
+  output: 'export'
 };
 
-module.exports = nextConfig;
+export default nextConfig;
